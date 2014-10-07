@@ -49,7 +49,6 @@ object List {
       case Cons(a, as) =>
         if (p(a)) dropWhile(as, p)
         else xs
-
     }
   }
 
@@ -84,5 +83,13 @@ object List {
     loop(Nil, as)
   }
 
+  //exercise 3.11
+  def length[A](xs: List[A]): Int = foldRight(xs, 0)((a, b) => 1 + b)
+
+  //exercise 3.12
+  def reverse[A](xs: List[A]): List[A] = {
+    val zero: List[A] = List()
+    foldLeft(xs, zero)((a, b) => List.setHead(a, b))
+  }
 
 }
